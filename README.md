@@ -32,66 +32,99 @@ The program performs the following operations:
 
 ## Algorithm
 
-### Step 1:
-Import the required libraries: OpenCV, NumPy, and Matplotlib.
-
-### Step 2:
-Read the image `parrot.jpg` in grayscale format.
-
-### Step 3:
-Display the grayscale image and plot its histogram.
-
-### Step 4:
-Apply histogram equalization using `cv2.equalizeHist()` to enhance contrast.
-
-### Step 5:
-Display original grayscale image, its histogram, enhanced image, and its histogram using a 2 × 2 grid.
-
-### Step 6:
-Read the same image in color format.
-
-### Step 7:
-Split the image into B, G, R channels and plot their histograms.
-
-### Step 8:
-Convert the image from BGR to HSV color space.
-
-### Step 9:
-Apply histogram equalization on the V (Value) channel.
-
-### Step 10:
-Merge the channels and convert the image back to BGR format.
-
-### Step 11:
-Display original color image, histogram, enhanced image, and enhanced histogram using a 2 × 2 grid.
-
----
+```
+1)Import Required Libraries
+->Import OpenCV (cv2) and Matplotlib (pyplot) for image processing and visualization.
+2)Read the Input Image
+->Load the color image from the file using cv2.imread().
+3)Convert to Grayscale
+->Convert the loaded image into grayscale using cv2.cvtColor().
+4)Compute and Display Original Histogram
+->Display the grayscale image.
+->Calculate its histogram using cv2.calcHist() and plot it.
+5)Apply Histogram Equalization
+->Enhance the contrast of the grayscale image using cv2.equalizeHist().
+6)Compute and Display Equalized Results
+->Display the equalized image.
+->Calculate and plot the histogram of the equalized image.
+```
 
 ## Program
 
 ### Developed By:
-**Name:** ____________________________  
+**Name:** OVIYA N
 
 ### Register No:
-____________________________  
+212223040140
 
 ---
+## STEP-1
+```
+import cv2
+from matplotlib import pyplot as plt
+```
+## STEP-2
+```
+# Load the color image
+image = cv2.imread('seed.jpg')
+```
+## STEP-3
+```
+# Convert the image to grayscale
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+```
+## STEP-4
+```
+plt.imshow(gray_image, cmap='gray')
+plt.title('Original Grayscale Image')
+plt.axis('off')
+```
+## STEP-5
+```
+hist_original = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+```
+## STEP-6
+```
+plt.plot(hist_original, color='black')
+plt.title('Original Histogram')
+plt.xlim([0, 256])
+```
+## STEP-7
+```
+# Apply histogram equalization
+equalized_image = cv2.equalizeHist(gray_image)
+```
+## STEP-8
+```
+plt.imshow(equalized_image, cmap='gray')
+plt.title('Equalized Image')
+plt.axis('off')
+```
+## STEP-9
+```
+hist_equalized = cv2.calcHist([equalized_image], [0], None, [256], [0, 256])
+```
+## STEP-9
+```
+plt.plot(hist_equalized, color='black')
+plt.title('Equalized Histogram')
+plt.xlim([0, 256])
+```
 
 ##  Output
-
 ### Grayscale Histogram Equalization
+- Original grayscale image is displayed
+  <img width="389" height="409" alt="image" src="https://github.com/user-attachments/assets/1b9d29d2-be20-470b-b0ad-668eb77ba8df" />
 
-- Original grayscale image is displayed  
-- Histogram of original grayscale image is plotted  
-- Enhanced image after histogram equalization is displayed  
+- Histogram of original grayscale image is plotted
+  <img width="571" height="433" alt="image" src="https://github.com/user-attachments/assets/c09bf34c-f2b6-44e6-9ceb-339320e6a6d3" />
+
+- Enhanced image after histogram equalization is displayed
+  <img width="389" height="409" alt="image" src="https://github.com/user-attachments/assets/8752c080-e637-4dbb-bb43-f44b77732037" />
+ 
 - Histogram of enhanced grayscale image shows improved contrast  
-
-### Color Image Histogram Equalization
-
-- Original color image is displayed  
-- Histogram of B, G, R channels is plotted  
-- Enhanced image after HSV-based equalization is displayed  
-- Histogram of enhanced image shows better intensity distribution  
+ 
+<img width="571" height="433" alt="image" src="https://github.com/user-attachments/assets/80227816-cfcf-44fb-bdbf-b6c09e252b9f" />
 
 ---
 
